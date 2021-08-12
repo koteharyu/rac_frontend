@@ -2,7 +2,7 @@
   <div>
     <v-container>
       <v-row justify="center" align="center">
-        <v-col cols="12" sm="8" md="4">
+        <v-col cols="12" sm="8" md="6">
           <v-card class="elevation-12">
             <v-card-text>
               <v-form ref="form" v-model="valid" lazy-validation>
