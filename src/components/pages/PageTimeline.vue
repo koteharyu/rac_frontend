@@ -1,11 +1,17 @@
 <template>
-  <div>
-    <div class="m-5" v-if="$store.getters['currentUser']">
-      <MicropostForm @created="createMicropost"></MicropostForm>
-    </div>
-    <TimelineList v-if="isExistMicroposts" :microposts="microposts"></TimelineList>
-    <div v-else class="text-center">投稿がありません</div>
-  </div>
+  <v-container>
+    <v-row>
+      <v-col>
+        <div>
+          <div class="mb-5" v-if="$store.getters['currentUser']">
+            <MicropostForm @created="createMicropost"></MicropostForm>
+          </div>
+          <TimelineList :microposts="microposts" v-if="isExistMicroposts" ></TimelineList>
+          <div class="text-center" v-else>一件もありません</div>
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
