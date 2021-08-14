@@ -1,9 +1,10 @@
 <template>
   <div>
-    <div class="m-5">
+    <div class="m-5" v-if="$store.getters['currentUser']">
       <MicropostForm @created="createMicropost"></MicropostForm>
     </div>
-    <TimelineList :microposts="microposts"></TimelineList>
+    <TimelineList v-if="isExistMicroposts" :microposts="microposts"></TimelineList>
+    <div v-else class="text-center">投稿がありません</div>
   </div>
 </template>
 
@@ -23,6 +24,11 @@ export default {
   }),
   created() {
     this.fetchMicroposts();
+  },
+  computed: {
+    isExistMicroposts() {
+      return this.microposts.length > 0;
+    },
   },
   methods: {
     async fetchMicroposts() {
