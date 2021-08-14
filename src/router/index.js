@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../components/Home.vue';
+import PageTimeline from '../components/pages/PageTimeline.vue';
 import PageUserLogin from '../components/pages/PageUserLogin.vue';
 import PageUserRegister from '../components/pages/PageUserRegister.vue';
 
@@ -9,8 +9,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'timeline',
+    component: PageTimeline,
   },
   {
     path: '/login',
