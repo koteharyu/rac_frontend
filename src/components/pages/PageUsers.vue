@@ -6,12 +6,12 @@
           <v-img
             :src="`http://placeimg.com/300/300/people?dummy=${user.id}`"
             class="white--text align-end"
-            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.9)"
           >
             <v-card-title v-text="user.name"></v-card-title>
           </v-img>
           <v-card-text class="text--primary">
-            <div># ダミー文字列</div>
+            <div># ダミー文字列ダミー文字列ダミー文字列ダミー文字列</div>
           </v-card-text>
 
           <v-card-actions>
