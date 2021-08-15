@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-list-item @click="$router.push(`/microposts/${microppst.id}`)">
+    <v-list-item @click="$router.push(`/microposts/${micropost.id}`)">
       <v-list-item-avatar @click="$router.push(`/users/${micropost.user.id}`)">
         <v-img :src="micropost.user.avatar_url"></v-img>
       </v-list-item-avatar>

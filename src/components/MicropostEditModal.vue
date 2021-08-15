@@ -32,12 +32,12 @@
 </template>
 
 <script>
-import MicropostForm from './MicropostForm.vue';
+// import MicropostForm from './MicropostForm.vue';
 export default {
   name: 'MicropostEditModal',
-  components: {
-    MicropostForm,
-  },
+  // components: {
+  //   MicropostForm,
+  // },
   props: {
     micropost: {
       type: Object,
