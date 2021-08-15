@@ -26,6 +26,10 @@ const actions = {
   logout({ commit }) {
     commit('SET_CURRENT_USER', null);
   },
+  async updateProfile({ commit, state }, userParams) {
+    const res = await axios.patch('http://localhost:3000/api/me/account', userParams);
+    commit('SET_CURRENT_USER', { ...res.data.user, ...{ token: state.currentUser.token } });
+  },
 };
 
 export default {

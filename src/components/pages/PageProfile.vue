@@ -1,0 +1,99 @@
+<template>
+  <v-container>
+    <v-row>
+      <v-col>
+        <v-card max-width="800" class="mx-auto" v-if="user">
+          <v-card-title>
+            <v-avatar size="120">
+              <v-img :src="user.avatar_url" aspect-ratio="1" class="grey lighten-2"></v-img>
+              <template v-if="isMe">
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-btn icon style="width: 100%; height: 100%">
+                    <v-icon color="secondary">mdi-camera</v-icon>
+                  </v-btn>
+                </v-row>
+              </template>
+            </v-avatar>
+
+            <v-spacer></v-spacer>
+
+            <v-btn v-if="isMe" class="ma-2" title outlined color="success" @click="$refs.dialog.open()">
+              <v-icon>mdi-pencil</v-icon> プロフィール編集
+            </v-btn>
+          </v-card-title>
+
+          <v-list>
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon color="indigo">mdi-account</v-icon>
+              </v-list-item-icon>
+
+              <v-list-item-content>
+                <v-list-item-title>{{ user.name }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-divider inset></v-divider>
+
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon color="indigo">mdi-email</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title>{{ user.email }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-divider inset></v-divider>
+
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon color="indigo">mdi-account-detail</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title>
+                  <span style="white-space: pre-line">{{ user.introduction }}</span>
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+          <ProfileEditModal ref="dialog"></ProfileEditModal>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script>
+import { mapGetters } from 'vuex';
+import axios from 'axios';
+import ProfileEditModal from '../ProfileEditModal.vue';
+
+export default {
+  name: 'PageProfile',
+  components: {
+    ProfileEditModal,
+  },
+  data: () => ({
+    targetUser: null,
+  }),
+  computed: {
+    ...mapGetters('auth', ['currentUser']),
+    isMe() {
+      return this.currentUser && this.userId == this.currentUser.id;
+    },
+    user() {
+      return this.isMe ? this.currentUser : this.targetUser;
+    },
+    userId() {
+      return this.currentUser.id || this.$route.params.id;
+    },
+  },
+  async created() {
+    if (this.isMe) return;
+
+    const res = await axios.get(`http://localhost:3000/api/users/${this.userId}`);
+    this.targetUser = res.data.user;
+  },
+};
+</script>

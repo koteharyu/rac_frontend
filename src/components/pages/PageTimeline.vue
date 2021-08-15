@@ -6,7 +6,7 @@
           <div class="mb-5" v-if="$store.getters['currentUser']">
             <MicropostForm @created="createMicropost"></MicropostForm>
           </div>
-          <TimelineList :microposts="microposts" v-if="isExistMicroposts" ></TimelineList>
+          <TimelineList :microposts="microposts" v-if="isExistMicroposts"></TimelineList>
           <div class="text-center" v-else>一件もありません</div>
         </div>
       </v-col>

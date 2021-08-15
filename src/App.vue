@@ -11,12 +11,21 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link v-if="$store.getters['currentUser']">
+        <v-list-item link to="/profile" v-if="$store.getters['currentUser']">
           <v-list-item-action>
             <v-icon>mdi-account</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title @click="logout" link>ログアウト</v-list-item-title>
+            <v-list-item-title>プロフィール</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link v-if="$store.getters['currentUser']">
+          <v-list-item-action>
+            <v-icon>mdi-logout</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title @click="logout">ログアウト</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 

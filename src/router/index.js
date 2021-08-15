@@ -3,6 +3,8 @@ import VueRouter from 'vue-router';
 import PageTimeline from '../components/pages/PageTimeline.vue';
 import PageUserLogin from '../components/pages/PageUserLogin.vue';
 import PageUserRegister from '../components/pages/PageUserRegister.vue';
+import PageMiropostDetail from '../components/pages/PageMicropostDetail.vue';
+import PageProfile from '../components/pages/PageProfile.vue';
 
 Vue.use(VueRouter);
 
@@ -21,6 +23,25 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: PageUserRegister,
+  },
+  {
+    path: '/microposts',
+    component: PageTimeline,
+  },
+  {
+    path: '/microposts/:id',
+    name: 'micropost-detail',
+    component: PageMiropostDetail,
+  },
+  {
+    path: '/profile',
+    name: 'my-profile',
+    component: PageProfile,
+  },
+  {
+    path: '/users/:id',
+    name: 'user-profile',
+    component: PageProfile,
   },
 ];
 
