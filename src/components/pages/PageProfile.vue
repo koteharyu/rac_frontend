@@ -5,14 +5,15 @@
         <v-card max-width="800" class="mx-auto" v-if="user">
           <v-card-title>
             <v-avatar size="120">
-              <v-img :src="user.avatar_url" aspect-ratio="1" class="grey lighten-2"></v-img>
-              <template v-if="isMe">
-                <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-btn icon style="width: 100%; height: 100%">
-                    <v-icon color="secondary">mdi-camera</v-icon>
-                  </v-btn>
-                </v-row>
-              </template>
+              <v-img :src="user.avatar_url" aspect-ratio="1" class="grey lighten-2">
+                <template v-if="isMe">
+                  <v-row class="fill-height ma-0" align="center" justify="center">
+                    <v-btn icon style="width: 100%; height: 100%">
+                      <v-icon color="secondary">mdi-camera</v-icon>
+                    </v-btn>
+                  </v-row>
+                </template>
+              </v-img>
             </v-avatar>
 
             <v-spacer></v-spacer>
@@ -65,7 +66,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import axios from 'axios';
 import ProfileEditModal from '../ProfileEditModal.vue';
 
@@ -78,15 +78,14 @@ export default {
     targetUser: null,
   }),
   computed: {
-    ...mapGetters('auth', ['currentUser']),
     isMe() {
-      return this.currentUser && this.userId == this.currentUser.id;
+      return this.$store.getters['currentUser'] && this.userId == this.$store.getters['currentUser'].id;
     },
     user() {
-      return this.isMe ? this.currentUser : this.targetUser;
+      return this.isMe ? this.$store.getters['currentUser'] : this.targetUser;
     },
     userId() {
-      return this.currentUser.id || this.$route.params.id;
+      return this.$store.getters['currentUser'].id || this.$route.params.id;
     },
   },
   async created() {

@@ -42,7 +42,7 @@ export default {
     ...mapGetters('auth', ['currentUser']),
   },
   created() {
-    this.user = { ...this.currentUser };
+    this.user = { ...this.$store.getters['currentUser'] };
   },
   methods: {
     open() {
