@@ -9,7 +9,7 @@
             </v-list-item-avatar>
 
             <v-list-item-content>
-              <v-list-item-title v-html="micropost.user.name"></v-list-item-title>
+              <v-list-item-title v-html="micropost.user.name" @click="$router.push(`/users/${micropost.user.id}`)" style="cursor: pointer"></v-list-item-title>
               <v-list-item-subtitle v-html="micropost.content" style="white-space: pre-line"></v-list-item-subtitle>
             </v-list-item-content>
 
