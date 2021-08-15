@@ -12,5 +12,12 @@ new Vue({
   store,
   vuetify,
   dayjs,
+  created() {
+    const userString = localStorage.getItem('currentUser');
+    if (userString) {
+      const userData = JSON.parse(userString);
+      this.$store.commit('SET_CURRENT_USER', userData);
+    }
+  },
   render: (h) => h(App),
 }).$mount('#app');
