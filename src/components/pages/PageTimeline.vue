@@ -39,7 +39,7 @@ export default {
   data: () => ({
     microposts: [],
     pagingMeta: null,
-    currentPage: 1
+    currentPage: 1,
   }),
   created() {
     this.fetchMicroposts();
@@ -51,9 +51,9 @@ export default {
   },
   methods: {
     async fetchMicroposts() {
-      const res = await axios.get('http://localhost:3000/api/microposts', { params: { page: this.currentPage }});
+      const res = await axios.get('http://localhost:3000/api/microposts', { params: { page: this.currentPage } });
       this.microposts = res.data.microposts;
-      this.pagingMeta = res.data.meta
+      this.pagingMeta = res.data.meta;
     },
     async createMicropost(micropostContent) {
       const micropostParams = {
@@ -65,10 +65,10 @@ export default {
       this.microposts = [...[res.data.micropost], ...this.microposts];
     },
     paging(page) {
-      this.currentPage = page
-      this.fetchMicroposts()
-      this.$vuetify.goYo(0)
-    }
+      this.currentPage = page;
+      this.fetchMicroposts();
+      this.$vuetify.goYo(0);
+    },
   },
 };
 </script>

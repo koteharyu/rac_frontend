@@ -11,6 +11,15 @@
           </v-list-item-content>
         </v-list-item>
 
+        <v-list-item to="/users" link>
+          <v-list-item-action>
+            <v-icon>mdi-account-group</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>ユーザーs</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
         <v-list-item link to="/profile" v-if="$store.getters['currentUser']">
           <v-list-item-action>
             <v-icon>mdi-account</v-icon>

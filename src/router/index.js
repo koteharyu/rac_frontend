@@ -5,6 +5,7 @@ import PageUserLogin from '../components/pages/PageUserLogin.vue';
 import PageUserRegister from '../components/pages/PageUserRegister.vue';
 import PageMiropostDetail from '../components/pages/PageMicropostDetail.vue';
 import PageProfile from '../components/pages/PageProfile.vue';
+import PageUsers from '../components/pages/PageUsers.vue';
 
 Vue.use(VueRouter);
 
@@ -42,6 +43,11 @@ const routes = [
     path: '/users/:id',
     name: 'user-profile',
     component: PageProfile,
+  },
+  {
+    path: '/users',
+    name: 'users',
+    component: PageUsers,
   },
 ];
 
