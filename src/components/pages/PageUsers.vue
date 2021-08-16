@@ -68,7 +68,7 @@
         </v-card>
       </v-col>
     </v-row>
-    <v-row justify="center">
+    <v-row justify="center" class="pb-10">
       <template v-if="pagigMeta">
         <div class="text-center">
           <v-pagination v-model="pagingMeta.current_page" :legnth="pagingMeta.total_pages" @input="paging"></v-pagination>
